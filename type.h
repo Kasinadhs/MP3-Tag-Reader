@@ -1,27 +1,25 @@
-#ifndef TYPES_H
-#define TYPES_H
+#ifndef MP3_PROJECT_H
+#define MP3_PROJECT_H
+#include<stdio.h>
+#include<string.h>
 
-typedef unsigned int uint;
+typedef struct 
+{ 
+    char title[31];   // TIT2 //FOR 4BYTES OF FRAME_ID
+    char artist[31];   //TPE1     // to holds the different types of tags into a single structure. 
+    char album[31];     //TALB
+    char year[5];       //TYER
+    char comment[31];       //comm
+    char content_type[31];         //TCON
+} Mp3_project;   //new datatype to  the structure 
 
-/* Status */
-typedef enum
-{
-    e_success,
-    e_failure
-} Status;
+void view(char* filename,Mp3_project * tags );
+void print_tag( Mp3_project * tags);
+void edit(char *filename, Mp3_project *tags, char *tag_name, char *new_info);
 
-typedef struct
-{
-    mp3_fileview;
-    mp3_filename;
-};
-/* Operation type */
-typedef enum
-{
-    e_encode,
-    e_decode,
-    e_unsupported
-} OperationType;
+
+
+
 
 
 #endif
